@@ -239,6 +239,73 @@ si ese otro vuelve a caer vuelve a buscar en su lista de nodos.
 ### Math Service
 
 
+## Controlador 
+El controlador recibe parametros 1 numero
+
+```
+@CrossOrigin(origins = "*")
+    @GetMapping("/collat")
+    public String  getCollatz(@RequestParam(defaultValue = "1") String value){
+```
+
+le delega la funcion al service
+
+```
+@Service
+public class mathService {
+    private String secuencia = "";
+
+    public String collatz(int valor){
+
+        while(valor !=1 && valor > 0){
+            anadirNum(valor);
+            if(valor % 2 == 0){
+                valor = par(valor);
+            }else{
+                valor = impar(valor);
+            }
+            System.out.println(this.secuencia);
+        }
+
+
+        return  this.secuencia + "->" +1;
+    }
+
+
+    public void resetear(){
+        this.secuencia = "";
+    }
+
+    private int impar(int n){
+        return (3*n)+1;
+    }
+    private int par(int n){
+        return n/2;
+    }
+
+    private void anadirNum(int n){
+        if(this.secuencia.equals("")){
+            this.secuencia =  this.secuencia + n;
+        }else{
+            this.secuencia =  this.secuencia+"->"+n;
+
+        }
+
+    }
+    private String pasarAString(int v){
+        return  String.valueOf(v);
+    }
+}
+```
+
+
+el metodo principal es collatz 
+este revisa si el numero es mayor a 0 y diferente de 1
+y se aplican las reglas y se va creando un string de la secuencia
+
+este string lo devuelve al controller que lo enviara al proxy 
+
+
 # Desplegue
 
 Se realiza mvn clean package para obtener el .jar del servicio rest
