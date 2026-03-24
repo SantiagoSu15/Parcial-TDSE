@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/")
 public class proxyController {
@@ -14,7 +16,7 @@ public class proxyController {
     private proxyService proxyService;
     @CrossOrigin(origins = "*")
     @GetMapping("/proxy/**")
-    public String proxy(HttpServletRequest request) {
+    public Map<String, String> proxy(HttpServletRequest request) {
         String path = request.getRequestURI().replace("/proxy", "");
         return proxyService.llamarActivo(path);
     }

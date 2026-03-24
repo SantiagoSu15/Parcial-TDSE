@@ -18,7 +18,7 @@ public class mathController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/collat")
-    public Map<String, String> getCollatz(@RequestParam(defaultValue = "1") String value){
+    public String  getCollatz(@RequestParam(defaultValue = "1") String value){
         int v = Integer.parseInt(value);
         Map<String, String> result = new HashMap<>();
         result.put("operation", "collatzsequence");
@@ -28,6 +28,6 @@ public class mathController {
         servicio.resetear();
 
 
-        return result;
+        return servicio.collatz(v);
     }
 }

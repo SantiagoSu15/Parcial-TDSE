@@ -19,8 +19,8 @@ public class Verificador {
     private final HttpClient  client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build();
     public Verificador(){
         this.nodos = new ArrayList<>();
-        Nodo n1 = new Nodo("http://ec2-3-239-47-117.compute-1.amazonaws.com:42000",true);
-        Nodo n2 = new Nodo("http://ec2-3-239-47-117.compute-1.amazonaws.com:41000",false);
+        Nodo n1 = new Nodo("http://ec2-54-167-180-58.compute-1.amazonaws.com:8080/collat?value=1",true);
+        Nodo n2 = new Nodo("http://ec2-52-90-176-132.compute-1.amazonaws.com:8080/collat?value=1",false);
         this.nodos.add(n1);
         this.nodos.add(n2);
         Optional<Nodo> master = Optional.of(nodos.stream().filter(n -> n.master).findFirst().get());
