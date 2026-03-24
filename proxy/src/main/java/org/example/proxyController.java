@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+import java.net.ProtocolException;
 import java.util.Map;
 
 @RestController
@@ -16,8 +18,14 @@ public class proxyController {
     private proxyService proxyService;
     @CrossOrigin(origins = "*")
     @GetMapping("/proxy/**")
-    public Map<String, String> proxy(HttpServletRequest request) {
+    public String proxy(HttpServletRequest request) throws IOException {
         String path = request.getRequestURI().replace("/proxy", "");
+        String query = request.getQueryString();
+
+        if (query != null) {
+            path += "?" + query;
+        }
+
         return proxyService.llamarActivo(path);
     }
 }

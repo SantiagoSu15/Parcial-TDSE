@@ -21,7 +21,7 @@
     document.getElementById("getrespmsg").innerHTML =
     this.responseText;
     }
-    xhttp.open("GET", "http://localhost:8080/collat?value="+nameVar);
+    xhttp.open("GET", "http://ec2-52-91-204-27.compute-1.amazonaws.com:8080/proxy/collat?value="+nameVar);
     xhttp.send();
     }
 </script>
