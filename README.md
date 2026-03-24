@@ -330,6 +330,12 @@ donde nombre del jar es el nombre del jar dado por maven
 https://github.com/user-attachments/assets/6b65b804-7f45-4017-8114-d6c7c450217d
 
 
+En el video se pueden observar las instancias en funcionamiento
+despues de hacer 2 llamadas al proxy se decide apagar la primera instancia para mostrar que la segunda es quien realiza la operacion
+
+Los dns publicos de las insancias se pusieron en el verificador
+
+
 ## Construido con
 
 - **Java** — Lenguaje principal
