@@ -321,7 +321,13 @@ donde nombre del jar es el nombre del jar dado por maven
 
 ### Fotos
 
+![img](docs/img.png)
 
+![img](docs/img_1.png)
+
+![img](docs/img_2.png)
+
+![img](docs/img_3.png)
 
 
 ### video
